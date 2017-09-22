@@ -1,5 +1,36 @@
 body{
-  background-color: aquamarine;
+  background-color: gray;
   padding: 10px;
   text-align: center;
 }
+
+.btn1{
+  /*background-color: rgb(139, 224, 238);*/
+  margin: 1px;
+}
+
+.btn1:hover{
+  background-color: rgb(139, 224, 238);
+}
+
+
+.menu1{
+  display: inline-block;
+}
+
+.jumbot1{
+  margin-top: 50px;
+  padding: 0px;
+}
+
+.nbar1{
+  background-color: aquamarine;
+}
+
+.pic-nov1{
+  width: 100%;
+  height: auto;
+}
+
+
+/*----------------------------------------*/
