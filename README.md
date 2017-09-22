@@ -3,6 +3,8 @@ A full-Stack online store.
 
     ***** NOVERIA *****
 
+![alt tag](https://github.com/Edxael/Noveria-Store/blob/master/views/img/01-design/Noveria1.png "Description goes here")
+
 To see this app live: http://noveria.mycode.website/
 
 
