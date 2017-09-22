@@ -9,9 +9,9 @@ To see this app live: http://noveria.mycode.website/
 This project is one online store where users can review items and and purchase them.
 the technologies used on this Web-Applications are:
 
-Node.js
-Express,js
-MongoDB
+* Node.js
+* Express,js
+* MongoDB
 
 ----
 
