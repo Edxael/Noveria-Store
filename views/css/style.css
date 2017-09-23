@@ -34,3 +34,22 @@ body{
 
 
 /*----------------------------------------*/
+
+/*------------ Sing Up Page --------------*/
+.myfc{
+  margin-bottom: 5px;
+  width: 40%;
+  margin: 3px auto;
+  display: block;
+}
+
+@media screen and (max-width: 699px){
+  .myfc{
+    margin-bottom: 5px;
+    width: 85%;
+    margin: 3px auto;
+    display: block;
+  }
+}
+
+/*----------------------------------------*/

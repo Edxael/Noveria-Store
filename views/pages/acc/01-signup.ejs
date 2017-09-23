@@ -1,0 +1,27 @@
+
+<% include ../../parts/01-up %>
+  <h1>SIGN-UP  Page...</h1>
+
+  <div class="row">
+    <div class="col-lg-6 col-md-offset-3 ">
+
+      <% if (errors.length > 0) { %>
+        <div class="alert alert-danger alert-dismissible">
+          <button type="button" class="close" data-dismmiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <%= errors %>
+        </div>
+      <% } %>
+
+      <form method="post">
+        <input type="text" class="form-control myfc" name="name" value="" placeholder="Full Name">
+        <input type="email" class="form-control myfc" name="email" value="" placeholder="Email Address">
+        <input type="password" class="form-control myfc" name="password" value="" placeholder="Password">
+        <button type="submit" class="btn btn-success" name="button"> - Submit - </button>
+      </form>
+
+    </div>
+  </div>
+
+<% include ../../parts/02-dw %>
