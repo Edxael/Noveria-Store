@@ -1,0 +1,38 @@
+
+
+<% include ../../parts/01-up %>
+
+
+  <h1>Edit Profile  Page...</h1>
+
+  <div class="current-data">
+    <h4>Your Current Data is:</h4>
+
+    <ul>
+      <li>Name: <%= user.profile.name %></li>
+      <li>Email: <%= user.email %></li>
+      <li>Password: <%= user.password %></li>
+      <li>Shipping Address: <%= user.address %></li>
+    </ul>
+  </div>
+  <br><br>
+
+
+
+  <h3>To update your data type in the fields below and click - Submit -</h3>
+  <form method="post">
+    <p>New Full Name:</p>
+    <input type="text" class="form-control myfc" name="name" value="<%= user.profile.name %>" placeholder="New Full Name">
+
+    <p>New Email:</p>
+    <input type="email" class="form-control myfc" name="email" value="<%= user.email %>" placeholder="New Email Address">
+
+
+    <p>Shipping Address:</p>
+    <input type="text" class="form-control myfc" name="address" value="<%= user.address %>" placeholder="Shipping Address...">
+
+    <button type="submit" class="btn btn-success" name="button"> - Submit - </button>
+  </form>
+
+
+<% include ../../parts/02-dw %>

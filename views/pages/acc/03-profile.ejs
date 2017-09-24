@@ -1,7 +1,23 @@
 <% include ../../parts/01-up %>
   <h1>Profile  Page...</h1>
 
-  <p>Welcome</p>
-  <%= user.profile.name %>
+  <div class="container profile-container">
+    <div class="row">
+
+      <img src="<%= user.profile.picture%>" alt="Missing Pic.">
+      <p>Name: <%= user.profile.name %></p>
+      <p>Email: <%= user.email %></p>
+      <p>address: <%= user.address %></p>
+
+      <a href="/edit-profile" class="btn btn-primary btn-lg">Edit Profile</a>
+
+    </div>
+  </div>
+
+
+
+
+
+
 
 <% include ../../parts/02-dw %>

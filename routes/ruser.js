@@ -25,7 +25,7 @@ router.get('/profile', function(req, res, next){
 });
 
 
-router.get('/3', function(req, res, next) {
+router.get('/signup', function(req, res, next) {
   res.render('pages/acc/01-signup.ejs', {
     errors: req.flash('errors')
   });
@@ -33,26 +33,29 @@ router.get('/3', function(req, res, next) {
 
 var data1 = bodyParser.urlencoded({ extended: false });
 
+
+
 //       Code to use Postman
-router.post('/3', data1, function(req, res, next){
+router.post('/signup', data1, function(req, res, next){
   var user = new User();
   user.profile.name = req.body.name;
   user.password = req.body.password;
   user.email = req.body.email;
+  user.address = req.body.address;
+  user.profile.picture = user.gravatar();
 
     User.findOne({ email: req.body.email }, function(err, existingUser){
       if(existingUser){
-        // console.log( "The Email: " + req.body.email + " Is alredy in use." );
         req.flash('errors', 'Account with that email address already exists');
-        // return res.redirect('pages/acc/01-signup.ejs');
-        return res.redirect('/3');
+        return res.redirect('/signup');
 
       }else {
-
         user.save(function(err, user){
           if(err) return next(err);
-
-          return res.redirect('/');
+          req.logIn(user, function(err){
+            if(err){ return next(err); }
+            res.redirect('/profile');
+          });
 
         });
 
@@ -60,6 +63,41 @@ router.post('/3', data1, function(req, res, next){
     });
 
 });
+
+
+    // Code to log-Out from the session
+router.get('/logout', function(req, res, next){
+  req.logout();
+  res.redirect('/');
+});
+
+
+
+    // Code for Editing account information
+router.get('/edit-profile', function(req, res, next){
+  res.render('pages/acc/04-edit-profile.ejs', { message: req.flash('success') });
+});
+
+router.post('/edit-profile', function(req, res, next){
+  User.findOne({ _id: req.user._id }, function(err, user) {
+
+    if (err) return next(err);
+
+    if (req.body.name) user.profile.name = req.body.name;
+    if (req.body.email) user.email = req.body.email;
+    if (req.body.address) user.address = req.body.address;
+
+    user.save(function(err) {
+      if (err) return next(err);
+      req.flash('success', 'Successfully Edited your profile');
+      return res.redirect('/profile');
+    });
+  });
+});
+
+
+
+
 
 
 module.exports = router;
