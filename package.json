@@ -13,6 +13,7 @@
   "author": "Edmundo Rubio",
   "license": "ISC",
   "dependencies": {
+    "async": "^2.5.0",
     "bcrypt": "^1.0.3",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.1",
@@ -24,6 +25,7 @@
     "express": "^4.15.4",
     "express-flash": "0.0.2",
     "express-session": "^1.15.5",
+    "faker": "^4.1.0",
     "mongoose": "^4.11.12",
     "morgan": "^1.8.2",
     "passport": "^0.4.0",

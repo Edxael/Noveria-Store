@@ -14,9 +14,7 @@ var passport = require('passport');
 
 var mySecret = require('./config/secret.js');
 var User = require('./models/user.js');
-var mainRoutes = require('./routes/main');
-var userRoutes = require('./routes/ruser.js');
-// var userRoutes = require('./routes/ruser');
+var Category = require('./models/category.js');
 
 
 
@@ -30,9 +28,10 @@ mongoose.connect( mySecret.database , function(err){
   }
 });
 
+
     // ---------------------------------------
 
-app.set('view enginge', 'ejs');
+
 app.use(morgan('dev'));
 app.use(express.static(__dirname + '/node_modules/bootstrap/dist'));
 app.use(express.static(__dirname + '/views'));
@@ -54,37 +53,29 @@ app.use(function(req, res,next){
   next();
 });
 
+app.use(function(req, res, next) {
+  Category.find({}, function(err, categories) {
+    if (err) return next(err);
+    res.locals.categories = categories;
+    next();
+  });
+});
+
+
+app.set('view engine', 'ejs');
+
+
+var mainRoutes = require('./routes/main');
+var userRoutes = require('./routes/ruser.js');
+var adminRoutes = require('./routes/admin.js');
+var apiRoutes = require('./api/api');
 
 app.use(mainRoutes);
 app.use(userRoutes);
+app.use(adminRoutes);
+app.use('/api', apiRoutes);
 
 
-    // ---------------------------------------
-
-          //       Code to use Postman
-          // app.post('/create-user', function(req, res, next){
-          //   var user = new User();
-          //   user.profile.name = req.body.name;
-          //   user.password = req.body.password;
-          //   user.email = req.body.email;
-          //   user.save(function(err){
-          //     if(err) return next(err);
-          //     res.json("Succesfully created a new user.")
-          //   });
-          // });
-
-
-// app.get('/', function(req, res){
-//   res.render('pages/00-index.ejs');
-// });
-//
-// app.get('/1', function(req, res){
-//   res.render('pages/01-one.ejs');
-// });
-//
-// app.get('/2', function(req, res){
-//   res.render('pages/02-two.ejs');
-// });
 
 
     // ---------------------------------------
